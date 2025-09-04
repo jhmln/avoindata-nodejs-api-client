@@ -1,0 +1,20 @@
+{
+  "name": "unofficial-avoindata-nodejs-client-tests",
+  "version": "0.1.0",
+  "description": "",
+  "homepage": "https://github.com/jhmln/avoindata-nodejs-api-client#readme",
+  "bugs": {
+    "url": "https://github.com/jhmln/avoindata-nodejs-api-client/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhmln/avoindata-nodejs-api-client.git"
+  },
+  "license": "MIT",
+  "author": "jhmln",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
