@@ -16,6 +16,6 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "tests": "node index.js"
   }
 }

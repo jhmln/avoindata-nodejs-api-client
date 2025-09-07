@@ -19,7 +19,7 @@ export default class HttpRequest {
    * @param {object} [options.body=null] - The request body for methods like POST or PUT.
    * @returns {Promise<any>} A promise that resolves with the JSON response.
    */
-  async request(path, options = {}) {
+  async #request(path, options = {}) {
     const url = `${this.baseUrl}${path}`;
     const { method = 'GET', headers = {}, body = null } = options;
 
@@ -62,7 +62,7 @@ export default class HttpRequest {
    * @returns {Promise<any>} A promise that resolves with the JSON response.
    */
   get(path, headers = {}) {
-    return this.request(path, { method: 'GET', headers });
+    return this.#request(path, { method: 'GET', headers });
   }
 
   /**
@@ -73,7 +73,7 @@ export default class HttpRequest {
    * @returns {Promise<any>} A promise that resolves with the JSON response.
    */
   post(path, body, headers = {}) {
-    return this.request(path, { method: 'POST', body, headers });
+    return this.#request(path, { method: 'POST', body, headers });
   }
 
   /**
@@ -84,7 +84,7 @@ export default class HttpRequest {
    * @returns {Promise<any>} A promise that resolves with the JSON response.
    */
   put(path, body, headers = {}) {
-    return this.request(path, { method: 'PUT', body, headers });
+    return this.#request(path, { method: 'PUT', body, headers });
   }
 
   /**
@@ -94,6 +94,6 @@ export default class HttpRequest {
    * @returns {Promise<any>} A promise that resolves with the JSON response.
    */
   delete(path, headers = {}) {
-    return this.request(path, { method: 'DELETE', headers });
+    return this.#request(path, { method: 'DELETE', headers });
   }
 }
