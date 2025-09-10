@@ -1,0 +1,21 @@
+name: Sync
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sync-branch:
+    runs-on: ubuntu-latest
+    name: Sync development with master
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Merge master -> development
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: master
+          to_branch: development
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          message: 'Sync development with master'
