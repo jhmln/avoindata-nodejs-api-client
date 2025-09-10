@@ -16,6 +16,6 @@ jobs:
         with:
           type: now
           from_branch: master
-          to_branch: development
+          target_branch: development
           github_token: ${{ secrets.ACCESS_TOKEN }}
           message: 'Sync development with master'
