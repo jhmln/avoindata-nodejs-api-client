@@ -6,10 +6,10 @@ on:
 
 jobs:
   sync-branch:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     name: Sync development with master
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
       - name: Merge master -> development
         uses: devmasx/merge-branch@master
