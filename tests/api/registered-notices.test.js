@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { RegisteredNotices } from 'unofficial-avoindata-nodejs-client';
+import { RegisteredNotices } from '../../src/index.js';
 
 const registeredNotices = new RegisteredNotices();
 const notices = await registeredNotices.search();
