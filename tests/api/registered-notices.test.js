@@ -102,7 +102,6 @@ describe('Get code descriptions', () => {
 
       it(`Should return code descriptions for code ${code} in language ${language}`, async () => {
         assert.ok(async () => await registeredNotices.getCodeDescriptions(code, language));
-        await delay(500);
       });      
     }
   }
@@ -110,8 +109,4 @@ describe('Get code descriptions', () => {
 
 function hasProperty(value, property) {
   return Object.prototype.hasOwnProperty.call(value, property);
-}
-
-async function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
 }

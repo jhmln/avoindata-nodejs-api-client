@@ -1,7 +1,7 @@
 {
   "name": "unofficial-avoindata-nodejs-client",
   "version": "0.1.0",
-  "description": "",
+  "description": "Unofficial Node.js client for the Finnish Avoindata API",  
   "keywords": [],
   "homepage": "https://github.com/jhmln/avoindata-nodejs-api-client#readme",
   "bugs": {

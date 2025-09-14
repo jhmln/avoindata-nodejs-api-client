@@ -8,6 +8,6 @@
 		"editor.codeActionsOnSave": {
 			"source.fixAll.eslint": "always"
 		},
-		"eslint.validate": ["javascript"]
+		"eslint.validate": ["javascript", "typescript"]
 	}
 }
