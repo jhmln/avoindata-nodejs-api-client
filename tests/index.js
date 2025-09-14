@@ -32,7 +32,7 @@ describe('Get company', () => {
     await assert.rejects(async () => {
       await registeredNotices.getCompany('invalid-id');
     });
-  })
+  });
 
   it('Should return the same company when searched by business ID', () => {
     assert.deepEqual(originalCompany, comparisonCompany);

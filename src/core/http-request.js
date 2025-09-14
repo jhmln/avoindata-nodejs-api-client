@@ -28,8 +28,8 @@ export default class HttpRequest {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        ...headers,
-      },
+        ...headers
+      }
     };
 
     if (body) {

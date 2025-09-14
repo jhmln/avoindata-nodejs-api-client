@@ -16,9 +16,13 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint --fix .",
     "tests": "node index.js"
   },
   "dependencies": {
     "unofficial-avoindata-nodejs-client": "file:../src"
+  },
+  "devDependencies": {
+    "eslint": "^9.35.0"
   }
 }
