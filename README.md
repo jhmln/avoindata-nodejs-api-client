@@ -1,0 +1,3 @@
+## What is avoindata.fi?
+
+[avoindata.fi](https://avoindata.fi/) is Finland’s national open data platform. It provides a centralized service for discovering, sharing, and utilizing open data published by public sector organizations, companies, and communities. The platform enables users to search for datasets, access APIs, and find resources for developing data-driven applications and services. Its goal is to promote transparency, innovation, and the reuse of public information.
