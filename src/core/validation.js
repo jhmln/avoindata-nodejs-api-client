@@ -11,7 +11,7 @@ export function validateBusinessId(businessId) {
   }
 
   const remainder = sum % 11;
-  let calculatedCheckDigit;
+  let calculatedCheckDigit = null;
 
   if (remainder === 0) {
     calculatedCheckDigit = 0;
