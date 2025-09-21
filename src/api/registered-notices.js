@@ -1,3 +1,9 @@
+/*
+  Opendata Registered Notices Api provided by the Finnish Patent and Registration Office (PRH)
+  and is licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+  API documentation: https://avoindata.prh.fi/en/krek/swagger-ui  
+*/
+
 import HttpRequest from '../core/http-request.js';
 import { validateBusinessId, validateEnumeration } from '../core/validation.js';
 
