@@ -69,11 +69,11 @@ if (companyWithNotices) {
     it('Should return a matching public notice', async () => {
       const comparisonNotice = await registeredNotices.getPublicNotice(+recordYear, recordNumber);
 
-      for(let key in originalNotice) {
+      for(const key in originalNotice) {
         if(hasProperty(originalNotice, key)) {
           assert.deepEqual(originalNotice[key], comparisonNotice[key]);
         }
-      };
+      }
     });
   });
 }
@@ -108,5 +108,5 @@ describe('Get code descriptions', () => {
 });
 
 function hasProperty(value, property) {
-  return Object.prototype.hasOwnProperty.call(value, property);
+  return Object.hasOwn(value, property);
 }

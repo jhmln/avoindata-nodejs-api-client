@@ -8,11 +8,6 @@ export default defineConfig([
     plugins: { js }, 
     extends: ['js/recommended'], 
     languageOptions: { globals: globals.node },
-    rules: {
-      'comma-dangle': ['error', 'never'],
-      indent: ['error', 2],
-      quotes: ['error', 'single'],
-      semi: ['error', 'always']      
-    }
+    rules: {}
   }
 ]);
