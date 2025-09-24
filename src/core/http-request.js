@@ -48,6 +48,10 @@ export default class HttpRequest {
         return null;
       }
 
+      if (response.headers.get('Content-Type')?.includes('text/plain')) {
+        return await response.text();
+      }
+
       return await response.json();
     } catch (error) {
       console.error('Request failed:', error);

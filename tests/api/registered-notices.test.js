@@ -6,7 +6,7 @@ const registeredNotices = new RegisteredNotices();
 const notices = await registeredNotices.search();
 
 describe('Search', () => {
-  const hasMandatoryProperties = hasProperty(notices, 'totalResults') && hasProperty(notices, 'companies');
+  const hasMandatoryProperties = Object.hasOwn(notices, 'totalResults') && Object.hasOwn(notices, 'companies');
 
   it('Should have totalResults and companies property', () => {
     assert.equal(hasMandatoryProperties, true);
@@ -40,7 +40,7 @@ describe('Get company', () => {
 });
 
 const companyWithNotices = notices.companies.find(company => 
-  hasProperty(company, 'publicNotices') && company.publicNotices.length > 0
+  Object.hasOwn(company, 'publicNotices') && company.publicNotices.length > 0
 );
 
 if (companyWithNotices) {
@@ -70,7 +70,7 @@ if (companyWithNotices) {
       const comparisonNotice = await registeredNotices.getPublicNotice(+recordYear, recordNumber);
 
       for(const key in originalNotice) {
-        if(hasProperty(originalNotice, key)) {
+        if(Object.hasOwn(originalNotice, key)) {
           assert.deepEqual(originalNotice[key], comparisonNotice[key]);
         }
       }
@@ -101,12 +101,9 @@ describe('Get code descriptions', () => {
       const language = languages[languageIndex];
 
       it(`Should return code descriptions for code ${code} in language ${language}`, async () => {
-        assert.ok(async () => await registeredNotices.getCodeDescriptions(code, language));
+        const descriptions = await registeredNotices.getCodeDescriptions(code, language);
+        assert.equal(Array.isArray(descriptions) && descriptions.length > 0, true);
       });      
     }
   }
 });
-
-function hasProperty(value, property) {
-  return Object.hasOwn(value, property);
-}
