@@ -1,13 +1,23 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import { defineConfig } from 'eslint/config';
+import prettier from 'eslint-plugin-prettier/recommended';
 
 export default defineConfig([
-  { 
-    files: ['**/*.{js,mjs,cjs}'], 
-    plugins: { js }, 
-    extends: ['js/recommended'], 
+  {
+    files: ['**/*.{js,mjs,cjs}'],
+    plugins: { js, prettier },
+    extends: ['js/recommended'],
     languageOptions: { globals: globals.node },
-    rules: {}
+    rules: {
+      semi: ['error', 'always'],
+      'sort-imports': [
+        'error',
+        {
+          ignoreCase: false,
+          ignoreDeclarationSort: true
+        }
+      ]
+    }
   }
 ]);

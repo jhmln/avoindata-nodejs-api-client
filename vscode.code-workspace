@@ -1,13 +1,15 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"editor.codeActionsOnSave": {
-			"source.fixAll.eslint": "always"
-		},
-		"eslint.validate": ["javascript", "typescript"]
-	}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "always"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "files.autoSave": "afterDelay"
+  }
 }
