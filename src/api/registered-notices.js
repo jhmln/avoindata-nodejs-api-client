@@ -75,8 +75,11 @@ export default class RegisteredNotices extends HttpRequest {
       throw new Error('Invalid language: ' + language);
     }
 
-    const options = {headers: { 'Accept': 'text/plain' }};
-    const descriptions = await this.get(`/description?code=${code}&lang=${language}`, options);    
+    const options = { headers: { Accept: 'text/plain' } };
+    const descriptions = await this.get(
+      `/description?code=${code}&lang=${language}`,
+      options
+    );
 
     if (!/^([A-ZÅÄÖ]+)\t+(.+)$/gm.test(descriptions)) {
       throw new Error('Unexpected response format');
@@ -86,9 +89,9 @@ export default class RegisteredNotices extends HttpRequest {
     const lines = descriptions.split('\n');
 
     for (const line of lines) {
-      const [key, value] = line.split(/\t+/).map(part => part.trim());
+      const [key, value] = line.split(/\t+/).map((part) => part.trim());
       if (key && value) results.push({ code: key, description: value });
-    }    
+    }
 
     return results;
   }

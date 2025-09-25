@@ -3,7 +3,7 @@ const config = {
   bracketSameLine: false,
   bracketSpacing: true,
   embeddedLanguageFormatting: 'auto',
-  endOfLine: 'lf',
+  endOfLine: 'crlf',
   htmlWhitespaceSensitivity: 'css',
   jsxBracketSameLine: false,
   jsxSingleQuote: false,
