@@ -10,7 +10,6 @@ export default defineConfig([
     extends: ['js/recommended'],
     languageOptions: { globals: globals.node },
     rules: {
-      semi: ['error', 'always'],
       'sort-imports': [
         'error',
         {
