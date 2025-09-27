@@ -6,7 +6,9 @@ const registeredNotices = new RegisteredNotices();
 const notices = await registeredNotices.search();
 
 describe('Search', () => {
-  const hasMandatoryProperties = hasProperty(notices, 'totalResults') && hasProperty(notices, 'companies');
+  const hasMandatoryProperties =
+    Object.hasOwn(notices, 'totalResults') &&
+    Object.hasOwn(notices, 'companies');
 
   it('Should have totalResults and companies property', () => {
     assert.equal(hasMandatoryProperties, true);
@@ -25,7 +27,9 @@ describe('Search', () => {
 });
 
 const originalCompany = notices.companies[0];
-const comparisonCompany = await registeredNotices.getCompany(originalCompany.businessId.value);
+const comparisonCompany = await registeredNotices.getCompany(
+  originalCompany.businessId.value
+);
 
 describe('Get company', () => {
   it('Should throw an error if business ID is not valid', async () => {
@@ -39,15 +43,16 @@ describe('Get company', () => {
   });
 });
 
-const companyWithNotices = notices.companies.find(company => 
-  hasProperty(company, 'publicNotices') && company.publicNotices.length > 0
+const companyWithNotices = notices.companies.find(
+  (company) =>
+    Object.hasOwn(company, 'publicNotices') && company.publicNotices.length > 0
 );
 
 if (companyWithNotices) {
   const originalNotice = companyWithNotices.publicNotices[0];
   const [recordYear, recordNumber] = originalNotice.recordNumber.split('/');
 
-  describe('Get public notice', () => {    
+  describe('Get public notice', () => {
     it('Should throw an error if record year is null', async () => {
       await assert.rejects(async () => {
         await registeredNotices.getPublicNotice(null, '123');
@@ -67,10 +72,13 @@ if (companyWithNotices) {
     });
 
     it('Should return a matching public notice', async () => {
-      const comparisonNotice = await registeredNotices.getPublicNotice(+recordYear, recordNumber);
+      const comparisonNotice = await registeredNotices.getPublicNotice(
+        +recordYear,
+        recordNumber
+      );
 
-      for(const key in originalNotice) {
-        if(hasProperty(originalNotice, key)) {
+      for (const key in originalNotice) {
+        if (Object.hasOwn(originalNotice, key)) {
           assert.deepEqual(originalNotice[key], comparisonNotice[key]);
         }
       }
@@ -81,13 +89,19 @@ if (companyWithNotices) {
 describe('Get code descriptions', () => {
   it('Should throw an error if code list is invalid', async () => {
     await assert.rejects(async () => {
-      await registeredNotices.getCodeDescriptions('INVALID_CODE', RegisteredNotices.Language.FINNISH);
-    }); 
+      await registeredNotices.getCodeDescriptions(
+        'INVALID_CODE',
+        RegisteredNotices.Language.FINNISH
+      );
+    });
   });
 
   it('Should throw an error if language is invalid', async () => {
     await assert.rejects(async () => {
-      await registeredNotices.getCodeDescriptions(RegisteredNotices.CodeList.COMPANY_FORM, 'INVALID_LANGUAGE');
+      await registeredNotices.getCodeDescriptions(
+        RegisteredNotices.CodeList.COMPANY_FORM,
+        'INVALID_LANGUAGE'
+      );
     });
   });
 
@@ -97,16 +111,23 @@ describe('Get code descriptions', () => {
   for (let codeIndex = 0; codeIndex < codes.length; codeIndex++) {
     const code = codes[codeIndex];
 
-    for (let languageIndex = 0; languageIndex < languages.length; languageIndex++) {
+    for (
+      let languageIndex = 0;
+      languageIndex < languages.length;
+      languageIndex++
+    ) {
       const language = languages[languageIndex];
 
       it(`Should return code descriptions for code ${code} in language ${language}`, async () => {
-        assert.ok(async () => await registeredNotices.getCodeDescriptions(code, language));
-      });      
+        const descriptions = await registeredNotices.getCodeDescriptions(
+          code,
+          language
+        );
+        assert.equal(
+          Array.isArray(descriptions) && descriptions.length > 0,
+          true
+        );
+      });
     }
   }
 });
-
-function hasProperty(value, property) {
-  return Object.hasOwn(value, property);
-}

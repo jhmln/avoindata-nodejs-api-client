@@ -27,7 +27,7 @@ export default class HttpRequest {
       method,
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        Accept: 'application/json',
         ...headers
       }
     };
@@ -41,11 +41,18 @@ export default class HttpRequest {
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        throw new Error(
+          `HTTP error! status: ${response.status}, message: ${errorText}`
+        );
       }
 
-      if (response.status === 204) { // No Content
+      if (response.status === 204) {
+        // No Content
         return null;
+      }
+
+      if (response.headers.get('Content-Type')?.includes('text/plain')) {
+        return await response.text();
       }
 
       return await response.json();

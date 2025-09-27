@@ -12,10 +12,12 @@ describe('Business id', () => {
   });
 });
 
-describe('Enumeration', () => {  
+describe('Enumeration', () => {
   it('Should throw an error if enumeration is not an object', () => {
     assert.throws(
-      () => {validation.validateEnumeration(null, 'A');}, 
+      () => {
+        validation.validateEnumeration(null, 'A');
+      },
       { message: 'Argument "enumeration" is not an object' }
     );
   });
